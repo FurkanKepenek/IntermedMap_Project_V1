@@ -1,6 +1,6 @@
-# IntermedMap V.01
+# IntermedMap Project V.01
 
-# IntermedMap Project
+
 By İrem Kahveci<sup>1</sup>, Hamdi Furkan Kepenek<sup>1</sup>, Alaattin Şen<sup>2</sup>
 
 
