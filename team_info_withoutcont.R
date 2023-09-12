@@ -17,10 +17,9 @@ server <- function(input, output) {
       ContentTeam [label = 'Content Team'];
       İremKahveci [label = 'İrem Kahveci'];
       HFKepenek [label = 'Hamdi Furkan Kepenek'];
-      MEKorkmaz [label = 'Mustafa Emre Korkmaz'];
       
       Advisor -> {BioinformaticsTeam ContentTeam};
-      BioinformaticsTeam -> {İremKahveci HFKepenek MEKorkmaz};
+      BioinformaticsTeam -> {İremKahveci HFKepenek};
     }")
   })
 }
