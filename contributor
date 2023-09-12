@@ -1,0 +1,75 @@
+#contributor
+ tabPanel("Team",
+             fluidRow( titlePanel("TEAM"),
+                       mainPanel(
+                         grVizOutput("orgChart")
+                       ),
+                       h3("Content Team Information"),
+                       p("'Rukiye Akarsu'
+                       'Ertuğrul Akçakoca'
+                       'Sümeyya Akkum'
+'Nusaibah Tawfik Ahmed Al-Sanabani'
+'Zeynep Arıcan'
+'Zeynep Arslan'
+'Fatima Ashumova'
+'Sarah Olohitae Atane'
+'Fuat Avci'
+'Mine Nur Ayten'
+'Havva Berre Ayvaz'
+'Ebrar Beceren'
+'Rümeysa Beyan'
+'Fatma Beğendik'
+'Pınar Biraderoğlu'
+'Emine Bulut'
+'Ayçanil Bölük'
+'Ömer Faruk Demir'
+'Aleyna Erakcaoğlu'
+'Nurzülal Erden'
+'Maryam Hammou'
+'Hanife Kantarcı'
+'Güneş Sıdıka Karataş'
+'Ayşe Hamide Köse'
+'Ümmü Eylül Muku'
+'Tuğba Okur'
+'Damla Pucak'
+'Nargiz Rustamova'
+'Elif Sarıalan'
+'Şeyma Sağlam'
+'Seda Nur Serbest'
+'Saima Shabir'
+'Gizem Sude Yalçın'
+'Neslihan Yavrum'
+'Esma İrem Yıldırım'
+'Hilal Yıldız'
+'Gamze Yılmaz'
+'Hatice Yılmaz'
+'Senanur Yüksel'
+'Onur Çakıcı'
+'Enes Çakmak'
+'Başak Çelebi'
+'Elif Rümeyse Özsoy'
+'Simay Öztürk'
+'Leyla Gül Şahin'")
+                       ,
+                       align = "center"
+             )
+    ),
+
+
+    #server_part
+     {
+    output$orgChart <- renderGrViz({
+      grViz("digraph {
+      node [shape = 'rectangle'];
+      Advisor [label = 'Advisor: Alaattin Şen'];
+      BioinformaticsTeam [label = 'Bioinformatics Team'];
+      ContentTeam [label = 'Content Team'];
+      İremKahveci [label = 'İrem Kahveci'];
+      HFKepenek [label = 'Hamdi Furkan Kepenek'];
+      MEKorkmaz [label = 'Mustafa Emre Korkmaz'];
+      
+      Advisor -> {BioinformaticsTeam ContentTeam};
+      BioinformaticsTeam -> {İremKahveci HFKepenek MEKorkmaz};
+    }")
+    })
+  }

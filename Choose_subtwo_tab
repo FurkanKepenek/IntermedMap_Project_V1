@@ -1,0 +1,51 @@
+Choose_subtwo_tab
+
+library(shiny)
+library(readxl)
+
+# Excel dosyasını oku
+dosya <- read_excel("deneme_data.xlsx")
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("secim", "Veri Seç:", choices = dosya[, 2])
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Genel", dataTableOutput("genel")),
+        tabPanel("Ayrıntı", dataTableOutput("ayrinti"))
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+  # Seçilen değeri kullanarak ilgili satırı bul
+  secilenSatir <- reactive({
+    secilen <- dosya[dosya[, 2] == input$secim, -1]  # 1. sütunu hariç diğer sütunları al
+    secilen <- na.omit(secilen)  # NA değerleri içeren satırları kaldır
+    secilen <- secilen[rowSums(is.na(secilen)) != ncol(secilen), ]  # İçeriği bulunmayan satırları kaldır
+    secilen
+  })
+  
+  # Seçilen değerin bulunduğu satırın 1. sütunu
+  secilenSutun1 <- reactive({
+    secilen <- dosya[dosya[, 2] == input$secim, 1]  # 1. sütunu al
+    secilen <- na.omit(secilen)  # NA değerleri içeren satırları kaldır
+    secilen <- secilen[!is.na(secilen)]  # İçeriği bulunmayan satırları kaldır
+    secilen
+  })
+  
+  # Genel çıktı
+  output$genel <- renderDataTable({
+    secilenSatir()
+  })
+  
+  # Ayrıntı çıktı
+  output$ayrinti <- renderDataTable({
+    data.frame(Sütun1 = secilenSutun1())
+  })
+}
+
+shinyApp(ui, server)

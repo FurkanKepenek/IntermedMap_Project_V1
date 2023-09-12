@@ -1,0 +1,47 @@
+library(shiny)
+library(shinyTree)
+
+ui <- fluidPage(
+  fluidRow(
+    column(width = 4,
+           shinyTree("tree", checkbox = FALSE)
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$tree <- renderTree({
+    list(
+      text = "Biomolecules",
+      collapsed = FALSE,
+      children = list(
+        list(
+          text = "Carbohydrate",
+          children = list(
+            list(text = "Monosaccharides"),
+            list(text = "Disaccharides"),
+            list(text = "Polysaccharides")
+          )
+        ),
+        list(
+          text = "Lipid",
+          children = list(
+            list(text = "Fatty Acids"),
+            list(text = "Triglycerides"),
+            list(text = "Phospholipids")
+          )
+        ),
+        list(
+          text = "Protein",
+          children = list(
+            list(text = "Amino Acids"),
+            list(text = "Peptides"),
+            list(text = "Protein Structures")
+          )
+        )
+      )
+    )
+  })
+}
+
+shinyApp(ui, server)

@@ -1,0 +1,91 @@
+library(shiny)
+library(shinydashboard)
+library(shinyTree)
+
+# UI tasarımı
+ui <- dashboardPage(
+  dashboardHeader(title = "IntermedMap"),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("About", tabName = "about"),
+      menuItem("Map", tabName = "map"),
+      menuItem("Contact", tabName = "contact")
+    )
+  ),
+  dashboardBody(
+    tabItems(
+      tabItem(
+        tabName = "about",
+        fluidPage(
+          h2("About"),
+          h3("Advisor"),
+          p("Advisor bilgileri buraya gelecek."),
+          h3("Bioinformatics Team"),
+          p("Bioinformatics team bilgileri buraya gelecek."),
+          h3("Content Team"),
+          p("Content team bilgileri buraya gelecek.")
+        )
+      ),
+      tabItem(
+        tabName = "map",
+        fluidPage(
+          h2("Map"),
+          p("Excel verilerindeki pathway başlıklı yazılar arasındaki ilişkiyi ağaç formatında gösteren bir alan olacak."),
+          p("Aşağıda örnek bir ilişki ağacı bulunmaktadır."),
+          # shinyTree widget'ı
+          shinyTree("tree", checkbox = FALSE)
+        )
+      ),
+      tabItem(
+        tabName = "contact",
+        fluidPage(
+          h2("Contact"),
+          p("İletişim bilgileri buraya gelecek.")
+        )
+      )
+    )
+  )
+)
+
+# Server fonksiyonu
+server <- function(input, output) {
+  # shinyTree widget'ını render etme
+  output$tree <- renderTree({
+    list(
+      text = "Nutrients",
+      collapsed = FALSE,
+      children = list(
+        list(
+          text = "Carbohydrate",
+          collapsed = TRUE,
+          children = list(
+            list(text = "Monosaccharides"),
+            list(text = "Disaccharides"),
+            list(text = "Polysaccharides")
+          )
+        ),
+        list(
+          text = "Lipid",
+          collapsed = TRUE,
+          children = list(
+            list(text = "Triglycerides"),
+            list(text = "Phospholipids"),
+            list(text = "Steroids")
+          )
+        ),
+        list(
+          text = "Protein",
+          collapsed = TRUE,
+          children = list(
+            list(text = "Essential Amino Acids"),
+            list(text = "Non-essential Amino Acids"),
+            list(text = "Complete Proteins")
+          )
+        )
+      )
+    )
+  })
+}
+
+# Uygulamanın çalıştırılması
+shinyApp(ui = ui, server = server)
