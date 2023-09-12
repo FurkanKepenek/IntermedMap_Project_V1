@@ -33,7 +33,7 @@ In the fields of biochemistry and biological research, intermediates play a crit
 
 Intermediate data was sourced from PubChem and research articles. Data included IUPAC Name, General Information, Pathway name, Previous Intermediate, Next Intermediate, Cas Number, Chemical Formula (2D and 3D). Data was checked for reliability and transferred to R environment using readxl (V1.4.2).
 
-![Transferred data after filtering in R Shiny]([link_to_image.png]([https://github.com/FurkanKepenek/IntermedMap_Project_V1/blob/master/app_image/data.png](https://drive.google.com/file/d/1IEyKDp0NdpVHxpLX0PSGl8X9erba2fBS/view?usp=sharing)))
+![Transferred data after filtering in R Shiny]([link_to_image.png]((https://drive.google.com/file/d/1IEyKDp0NdpVHxpLX0PSGl8X9erba2fBS/view?usp=sharing)))
 
 ### Intermediate Pathway Mapping Process
 
@@ -43,9 +43,9 @@ Mapping was performed using R Studio and R (V4.3.0), with packages including vis
 
 The web application was developed using Shiny (V1.7.4), shinythemes (V1.2.0), DT (V0.28), and MASS (V7.3-60) packages.
 
-![Mapped data relationship in R Shiny]([link_to_image.png]([https://github.com/FurkanKepenek/IntermedMap_Project_V1/blob/master/app_image/map.png](https://drive.google.com/file/d/19oB3IJkcgYQ6YhZaMYY5ieodAcGxxw-M/view?usp=sharing)))
+![Mapped data relationship in R Shiny]([link_to_image.png]((https://drive.google.com/file/d/19oB3IJkcgYQ6YhZaMYY5ieodAcGxxw-M/view?usp=sharing)))
 
-![IntermedMap Project App Dashboard Tab]([link_to_image.png]([https://github.com/FurkanKepenek/IntermedMap_Project_V1/blob/master/app_image/dashboard.png](https://drive.google.com/file/d/1xTU-JK4rBS6ZKKKF8kc3WJ0jVBbK7Ndq/view?usp=sharing)))
+![IntermedMap Project App Dashboard Tab]([link_to_image.png]((https://drive.google.com/file/d/1xTU-JK4rBS6ZKKKF8kc3WJ0jVBbK7Ndq/view?usp=sharing)))
 
 ## Conclusion
 
