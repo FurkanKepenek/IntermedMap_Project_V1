@@ -1,0 +1,48 @@
+#day-night mode
+library(shiny)
+
+ui <- fluidPage(
+  tags$head(
+    tags$script(
+      HTML("
+            $(document).ready(function() {
+              if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                $('body').addClass('dark-mode');
+              }
+            });
+
+            function toggleDarkMode() {
+              $('body').toggleClass('dark-mode');
+            }
+          ")
+    ),
+    tags$style(
+      HTML("
+            body {
+              transition: background-color 0.5s;
+            }
+
+            .dark-mode {
+              background-color: #222222;
+              color: #ffffff;
+            }
+          ")
+    )
+  ),
+  navbarPage(
+    "Gece Gündüz Modu",
+    theme = "bootstrap",
+    tabPanel("Ana Sayfa", icon = icon("home")),
+    tabPanel("Ayarlar", icon = icon("cogs"), 
+             actionButton("toggle", "Gece Gündüz Modu Değiştir")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$toggle, {
+    toggleDarkMode()
+  })
+}
+
+shinyApp(ui, server)
