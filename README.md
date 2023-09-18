@@ -1,8 +1,6 @@
-# IntermedMap Project V.01
-
 ##Project available: https://kycva9-h0furkan-kepenek.shinyapps.io/IntermedMap_Project/
 
-
+# IntermedMap Project V.01
 
 By İrem Kahveci<sup>1</sup>, Hamdi Furkan Kepenek<sup>1</sup>, Alaattin Şen<sup>2</sup>
 
